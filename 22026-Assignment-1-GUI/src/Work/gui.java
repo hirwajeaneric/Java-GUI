@@ -37,7 +37,7 @@ public class gui extends javax.swing.JFrame {
         SignOutTool = new javax.swing.JButton();
         CalendarIcon = new javax.swing.JLabel();
         TodayDate = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        tableScrollPanel = new javax.swing.JScrollPane();
         MyTable = new javax.swing.JTable();
         PumpDataPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -82,6 +82,8 @@ public class gui extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         Range2TextField = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
+        UserInputDateRange1 = new com.toedter.calendar.JDateChooser();
+        UserInputDateRange2 = new com.toedter.calendar.JDateChooser();
         jPanel6 = new javax.swing.JPanel();
         ButtonsPanel = new javax.swing.JPanel();
         ReportButton = new javax.swing.JButton();
@@ -210,7 +212,7 @@ public class gui extends javax.swing.JFrame {
                 "idpump", "Date", "Pressure1", "Pressure2", "Pressure 3", "VolumeFlow", "Temperature", "RotationalSpeed", "Torque"
             }
         ));
-        jScrollPane1.setViewportView(MyTable);
+        tableScrollPanel.setViewportView(MyTable);
 
         PumpDataPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pump Data", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 1, 12), new java.awt.Color(51, 102, 255))); // NOI18N
 
@@ -323,7 +325,6 @@ public class gui extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(PumpDataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PumpDataPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12))
                     .addComponent(SaveButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -388,7 +389,7 @@ public class gui extends javax.swing.JFrame {
         RemarkPanelTab.setLayout(RemarkPanelTabLayout);
         RemarkPanelTabLayout.setHorizontalGroup(
             RemarkPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 307, Short.MAX_VALUE)
+            .addGap(0, 311, Short.MAX_VALUE)
         );
         RemarkPanelTabLayout.setVerticalGroup(
             RemarkPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,7 +402,7 @@ public class gui extends javax.swing.JFrame {
         DecisionPanelTab.setLayout(DecisionPanelTabLayout);
         DecisionPanelTabLayout.setHorizontalGroup(
             DecisionPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 307, Short.MAX_VALUE)
+            .addGap(0, 311, Short.MAX_VALUE)
         );
         DecisionPanelTabLayout.setVerticalGroup(
             DecisionPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,7 +499,7 @@ public class gui extends javax.swing.JFrame {
             UserInputPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UserInputPanelTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(UserInputPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(UserInputPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(UserInputPanelTabLayout.createSequentialGroup()
                         .addGroup(UserInputPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -510,9 +511,14 @@ public class gui extends javax.swing.JFrame {
                                 .addGap(29, 29, 29)
                                 .addComponent(Range2TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(ParameterComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(UserInputPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel20)
-                        .addComponent(jLabel3)))
+                    .addGroup(UserInputPanelTabLayout.createSequentialGroup()
+                        .addGroup(UserInputPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(UserInputPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(UserInputDateRange1, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(UserInputDateRange2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(16, Short.MAX_VALUE))
             .addGroup(UserInputPanelTabLayout.createSequentialGroup()
                 .addGroup(UserInputPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -536,14 +542,18 @@ public class gui extends javax.swing.JFrame {
                     .addComponent(jLabel19)
                     .addComponent(Range2TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addGroup(UserInputPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(UserInputDateRange1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel20)
+                .addGroup(UserInputPanelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel20)
+                    .addComponent(UserInputDateRange2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TotalAvailabilityPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -563,7 +573,7 @@ public class gui extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 307, Short.MAX_VALUE)
+            .addGap(0, 311, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -971,7 +981,7 @@ public class gui extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 743, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tableScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 743, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(PumpDataPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
@@ -990,7 +1000,7 @@ public class gui extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tableScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(PumpDataPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1116,6 +1126,8 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JTextField TorqueTextField;
     private javax.swing.JPanel TotalAvailabilityPanel;
     private javax.swing.JLabel TrafficLigthLabel;
+    private com.toedter.calendar.JDateChooser UserInputDateRange1;
+    private com.toedter.calendar.JDateChooser UserInputDateRange2;
     private javax.swing.JPanel UserInputPanelTab;
     private javax.swing.JPanel VolumeFlowPanel;
     private javax.swing.JSlider VolumeFlowSlider;
@@ -1146,6 +1158,6 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane tableScrollPanel;
     // End of variables declaration//GEN-END:variables
 }
