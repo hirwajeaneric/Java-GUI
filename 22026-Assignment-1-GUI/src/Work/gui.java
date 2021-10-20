@@ -5,6 +5,8 @@
  */
 package Work;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author hirwa
@@ -146,6 +148,11 @@ public class gui extends javax.swing.JFrame {
         ChartTool.setFocusable(false);
         ChartTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChartTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ChartTool.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChartToolActionPerformed(evt);
+            }
+        });
         ProjectToolBar.add(ChartTool);
 
         ClearTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/clean-1.jpg"))); // NOI18N
@@ -153,6 +160,11 @@ public class gui extends javax.swing.JFrame {
         ClearTool.setFocusable(false);
         ClearTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ClearTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ClearTool.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearToolActionPerformed(evt);
+            }
+        });
         ProjectToolBar.add(ClearTool);
 
         DataTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/data-2.jpg"))); // NOI18N
@@ -160,6 +172,11 @@ public class gui extends javax.swing.JFrame {
         DataTool.setFocusable(false);
         DataTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         DataTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        DataTool.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DataToolActionPerformed(evt);
+            }
+        });
         ProjectToolBar.add(DataTool);
 
         OkTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/ok-1.jpg"))); // NOI18N
@@ -167,6 +184,11 @@ public class gui extends javax.swing.JFrame {
         OkTool.setFocusable(false);
         OkTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         OkTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        OkTool.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OkToolActionPerformed(evt);
+            }
+        });
         ProjectToolBar.add(OkTool);
 
         PrintTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/print-1.jpg"))); // NOI18N
@@ -174,6 +196,11 @@ public class gui extends javax.swing.JFrame {
         PrintTool.setFocusable(false);
         PrintTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         PrintTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        PrintTool.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrintToolActionPerformed(evt);
+            }
+        });
         ProjectToolBar.add(PrintTool);
 
         SignOutTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/signout-1.jpg"))); // NOI18N
@@ -181,6 +208,11 @@ public class gui extends javax.swing.JFrame {
         SignOutTool.setFocusable(false);
         SignOutTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         SignOutTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        SignOutTool.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignOutToolActionPerformed(evt);
+            }
+        });
         ProjectToolBar.add(SignOutTool);
 
         CalendarIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/calendar-2.jpg"))); // NOI18N
@@ -223,9 +255,19 @@ public class gui extends javax.swing.JFrame {
 
         DeleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/Fifth icon.png"))); // NOI18N
         DeleteButton.setText("Delete Data");
+        DeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteButtonActionPerformed(evt);
+            }
+        });
 
         SaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/save-1.jpg"))); // NOI18N
         SaveButton.setText("Save New Data");
+        SaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveButtonActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel10.setText("Date");
@@ -602,26 +644,56 @@ public class gui extends javax.swing.JFrame {
         ReportButton.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         ReportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/report-1.png"))); // NOI18N
         ReportButton.setText("Report");
+        ReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReportButtonActionPerformed(evt);
+            }
+        });
 
         CloseButton.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         CloseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/close-1.jpg"))); // NOI18N
         CloseButton.setText("Close");
+        CloseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CloseButtonActionPerformed(evt);
+            }
+        });
 
         ChartButton.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         ChartButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/chart-2.png"))); // NOI18N
         ChartButton.setText("Chart");
+        ChartButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChartButtonActionPerformed(evt);
+            }
+        });
 
         DataButton.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         DataButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/data-2.jpg"))); // NOI18N
         DataButton.setText("Data");
+        DataButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DataButtonActionPerformed(evt);
+            }
+        });
 
         ClearButton.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         ClearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/clean-1.jpg"))); // NOI18N
         ClearButton.setText("Clear");
+        ClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearButtonActionPerformed(evt);
+            }
+        });
 
         OkButton.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         OkButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/ok-1.jpg"))); // NOI18N
         OkButton.setText("Ok");
+        OkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OkButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ButtonsPanelLayout = new javax.swing.GroupLayout(ButtonsPanel);
         ButtonsPanel.setLayout(ButtonsPanelLayout);
@@ -1017,6 +1089,7 @@ public class gui extends javax.swing.JFrame {
 
     private void ReportToolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportToolActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Report Clicked!!");
     }//GEN-LAST:event_ReportToolActionPerformed
 
     private void Pressure2TextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pressure2TextFieldActionPerformed
@@ -1026,6 +1099,76 @@ public class gui extends javax.swing.JFrame {
     private void VolumeFlowTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolumeFlowTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_VolumeFlowTextFieldActionPerformed
+
+    private void ChartToolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChartToolActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Chart Clicked!!");
+    }//GEN-LAST:event_ChartToolActionPerformed
+
+    private void ClearToolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearToolActionPerformed
+        // TODO add your handling code here
+        JOptionPane.showConfirmDialog(this, "Do you want to clear data?");
+    }//GEN-LAST:event_ClearToolActionPerformed
+
+    private void DataToolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataToolActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Data Clicked!!");
+    }//GEN-LAST:event_DataToolActionPerformed
+
+    private void OkToolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkToolActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Ok Clicked!!");
+    }//GEN-LAST:event_OkToolActionPerformed
+
+    private void PrintToolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintToolActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(this, "Do you want to Print?");
+    }//GEN-LAST:event_PrintToolActionPerformed
+
+    private void SignOutToolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutToolActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(this, "Are you sure you want to Sign out?");
+    }//GEN-LAST:event_SignOutToolActionPerformed
+
+    private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Data Saved Successfully!!");
+    }//GEN-LAST:event_SaveButtonActionPerformed
+
+    private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Data deleted successfully!");
+    }//GEN-LAST:event_DeleteButtonActionPerformed
+
+    private void ReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportButtonActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Report Printed Successfully!");
+    }//GEN-LAST:event_ReportButtonActionPerformed
+
+    private void CloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseButtonActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(this, "Do you want to close?");
+    }//GEN-LAST:event_CloseButtonActionPerformed
+
+    private void ChartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChartButtonActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Chart Displayed!!");
+    }//GEN-LAST:event_ChartButtonActionPerformed
+
+    private void DataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataButtonActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Data printed Successfully!!");
+    }//GEN-LAST:event_DataButtonActionPerformed
+
+    private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(this,"Do you want to clear the workspace?");
+    }//GEN-LAST:event_ClearButtonActionPerformed
+
+    private void OkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkButtonActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Thank you for confirming the entries.");
+    }//GEN-LAST:event_OkButtonActionPerformed
 
     /**
      * @param args the command line arguments

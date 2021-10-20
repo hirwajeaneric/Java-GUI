@@ -10,9 +10,16 @@
  */
 public class MyCalculator extends javax.swing.JFrame {
 
+    double first_initial = 0.0;
+    double first;
+    double second = 0.0;
+    double results = 0.0;
+    String operation;
+    String answer;
+
     /**
      * Creates new form MyCalculator
-     */
+     */    
     public MyCalculator() {
         initComponents();
     }
@@ -93,12 +100,10 @@ public class MyCalculator extends javax.swing.JFrame {
         setAlwaysOnTop(true);
 
         CalculatorBodyPanel.setBackground(new java.awt.Color(51, 51, 51));
-        CalculatorBodyPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Title.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         Title.setForeground(new java.awt.Color(255, 255, 255));
         Title.setText("Scientific Calculator");
-        CalculatorBodyPanel.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 18, -1, -1));
 
         ScreenPanel.setBackground(new java.awt.Color(153, 153, 153));
         ScreenPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -119,9 +124,10 @@ public class MyCalculator extends javax.swing.JFrame {
             ScreenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ScreenPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(ScreenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(InputTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                    .addComponent(AnswerTextField)))
+                .addGroup(ScreenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(AnswerTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                    .addComponent(InputTextField))
+                .addContainerGap())
         );
         ScreenPanelLayout.setVerticalGroup(
             ScreenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,8 +137,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 .addComponent(AnswerTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
         );
 
-        CalculatorBodyPanel.add(ScreenPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 54, -1, -1));
-
         BackButton.setBackground(new java.awt.Color(102, 102, 102));
         BackButton.setForeground(new java.awt.Color(255, 255, 255));
         BackButton.setText("Back");
@@ -141,7 +145,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 BackButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 168, -1, -1));
 
         equalSignButton.setText("=");
         equalSignButton.addActionListener(new java.awt.event.ActionListener() {
@@ -149,7 +152,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 equalSignButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(equalSignButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, 63, 38));
 
         additionButton.setBackground(new java.awt.Color(102, 102, 102));
         additionButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -159,7 +161,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 additionButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(additionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 376, 63, 38));
 
         subtractionButton.setBackground(new java.awt.Color(102, 102, 102));
         subtractionButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -169,7 +170,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 subtractionButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(subtractionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 332, 63, 38));
 
         multiplicationButton.setBackground(new java.awt.Color(102, 102, 102));
         multiplicationButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -179,7 +179,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 multiplicationButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(multiplicationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 288, 63, 38));
 
         divisionButton.setBackground(new java.awt.Color(102, 102, 102));
         divisionButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -189,7 +188,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 divisionButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(divisionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 244, 63, 38));
 
         modulusButton.setBackground(new java.awt.Color(102, 102, 102));
         modulusButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -199,7 +197,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 modulusButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(modulusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 63, 38));
 
         dotButton.setBackground(new java.awt.Color(0, 0, 0));
         dotButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,7 +206,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 dotButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(dotButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 420, 73, 38));
 
         number3.setBackground(new java.awt.Color(0, 0, 0));
         number3.setForeground(new java.awt.Color(255, 255, 255));
@@ -219,7 +215,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 number3ActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(number3, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 376, 70, 38));
 
         number6.setBackground(new java.awt.Color(0, 0, 0));
         number6.setForeground(new java.awt.Color(255, 255, 255));
@@ -229,7 +224,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 number6ActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(number6, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 332, 73, 38));
 
         number9.setBackground(new java.awt.Color(0, 0, 0));
         number9.setForeground(new java.awt.Color(255, 255, 255));
@@ -239,7 +233,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 number9ActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(number9, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 288, 73, 38));
 
         TanButton.setBackground(new java.awt.Color(102, 102, 102));
         TanButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -249,7 +242,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 TanButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(TanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 244, 73, 38));
 
         inverseTanButton.setBackground(new java.awt.Color(102, 102, 102));
         inverseTanButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -259,7 +251,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 inverseTanButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(inverseTanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 200, -1, 38));
 
         ClearButton.setBackground(new java.awt.Color(102, 102, 102));
         ClearButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -269,7 +260,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 ClearButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(ClearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 168, 73, -1));
 
         zeroButton.setBackground(new java.awt.Color(0, 0, 0));
         zeroButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -279,7 +269,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 zeroButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(zeroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 420, 74, 38));
 
         number2.setBackground(new java.awt.Color(0, 0, 0));
         number2.setForeground(new java.awt.Color(255, 255, 255));
@@ -289,7 +278,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 number2ActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(number2, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 376, 70, 38));
 
         number5.setBackground(new java.awt.Color(0, 0, 0));
         number5.setForeground(new java.awt.Color(255, 255, 255));
@@ -299,7 +287,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 number5ActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(number5, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 332, 74, 38));
 
         number8.setBackground(new java.awt.Color(0, 0, 0));
         number8.setForeground(new java.awt.Color(255, 255, 255));
@@ -309,27 +296,22 @@ public class MyCalculator extends javax.swing.JFrame {
                 number8ActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(number8, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 288, 74, 38));
 
         CosineButton.setBackground(new java.awt.Color(102, 102, 102));
         CosineButton.setForeground(new java.awt.Color(255, 255, 255));
         CosineButton.setText("Cosh");
-        CalculatorBodyPanel.add(CosineButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 244, 74, 38));
 
         InverseCosineButton.setBackground(new java.awt.Color(102, 102, 102));
         InverseCosineButton.setForeground(new java.awt.Color(255, 255, 255));
         InverseCosineButton.setText("Cos^-1");
-        CalculatorBodyPanel.add(InverseCosineButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 200, -1, 38));
 
         TenPowerX.setBackground(new java.awt.Color(102, 102, 102));
         TenPowerX.setForeground(new java.awt.Color(255, 255, 255));
         TenPowerX.setText("10^x");
-        CalculatorBodyPanel.add(TenPowerX, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 168, 74, -1));
 
         plusOrMinusButton.setBackground(new java.awt.Color(0, 0, 0));
         plusOrMinusButton.setForeground(new java.awt.Color(255, 255, 255));
         plusOrMinusButton.setText("+/-");
-        CalculatorBodyPanel.add(plusOrMinusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 420, 70, 38));
 
         number1.setBackground(new java.awt.Color(0, 0, 0));
         number1.setForeground(new java.awt.Color(255, 255, 255));
@@ -339,7 +321,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 number1ActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(number1, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 376, 70, 38));
 
         number4.setBackground(new java.awt.Color(0, 0, 0));
         number4.setForeground(new java.awt.Color(255, 255, 255));
@@ -349,7 +330,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 number4ActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(number4, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 332, 70, 38));
 
         number7.setBackground(new java.awt.Color(0, 0, 0));
         number7.setForeground(new java.awt.Color(255, 255, 255));
@@ -359,7 +339,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 number7ActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(number7, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 288, 70, 38));
 
         SineButton.setBackground(new java.awt.Color(102, 102, 102));
         SineButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -369,7 +348,6 @@ public class MyCalculator extends javax.swing.JFrame {
                 SineButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(SineButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 244, 70, 38));
 
         inverseSineButton.setBackground(new java.awt.Color(102, 102, 102));
         inverseSineButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -379,22 +357,18 @@ public class MyCalculator extends javax.swing.JFrame {
                 inverseSineButtonActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(inverseSineButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 200, -1, 38));
 
         exponentValue.setBackground(new java.awt.Color(102, 102, 102));
         exponentValue.setForeground(new java.awt.Color(255, 255, 255));
         exponentValue.setText("e");
-        CalculatorBodyPanel.add(exponentValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 168, 70, -1));
 
         Pi.setBackground(new java.awt.Color(102, 102, 102));
         Pi.setForeground(new java.awt.Color(255, 255, 255));
         Pi.setText("Pi");
-        CalculatorBodyPanel.add(Pi, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 168, 63, -1));
 
         SquareRoot.setBackground(new java.awt.Color(102, 102, 102));
         SquareRoot.setForeground(new java.awt.Color(255, 255, 255));
         SquareRoot.setText("Sqrt");
-        CalculatorBodyPanel.add(SquareRoot, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 200, 63, 38));
 
         OneOverX.setBackground(new java.awt.Color(102, 102, 102));
         OneOverX.setForeground(new java.awt.Color(255, 255, 255));
@@ -404,39 +378,187 @@ public class MyCalculator extends javax.swing.JFrame {
                 OneOverXActionPerformed(evt);
             }
         });
-        CalculatorBodyPanel.add(OneOverX, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 244, 63, 38));
 
         xPowerY.setBackground(new java.awt.Color(102, 102, 102));
         xPowerY.setForeground(new java.awt.Color(255, 255, 255));
         xPowerY.setText("x^y");
-        CalculatorBodyPanel.add(xPowerY, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 288, 63, 38));
 
         xPower3.setBackground(new java.awt.Color(102, 102, 102));
         xPower3.setForeground(new java.awt.Color(255, 255, 255));
         xPower3.setText("x^3");
-        CalculatorBodyPanel.add(xPower3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 332, 63, 38));
 
         xPower2.setBackground(new java.awt.Color(102, 102, 102));
         xPower2.setForeground(new java.awt.Color(255, 255, 255));
         xPower2.setText("x^2");
-        CalculatorBodyPanel.add(xPower2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 376, 63, 38));
 
         factorialButton.setBackground(new java.awt.Color(102, 102, 102));
         factorialButton.setForeground(new java.awt.Color(255, 255, 255));
         factorialButton.setText("n!");
-        CalculatorBodyPanel.add(factorialButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 420, 63, 38));
+
+        javax.swing.GroupLayout CalculatorBodyPanelLayout = new javax.swing.GroupLayout(CalculatorBodyPanel);
+        CalculatorBodyPanel.setLayout(CalculatorBodyPanelLayout);
+        CalculatorBodyPanelLayout.setHorizontalGroup(
+            CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CalculatorBodyPanelLayout.createSequentialGroup()
+                .addGroup(CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CalculatorBodyPanelLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(Title))
+                    .addGroup(CalculatorBodyPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(CalculatorBodyPanelLayout.createSequentialGroup()
+                                .addComponent(Pi, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(exponentValue, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(TenPowerX, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(ClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addGroup(CalculatorBodyPanelLayout.createSequentialGroup()
+                                .addComponent(xPowerY, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(number7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(number8, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(number9, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(multiplicationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(CalculatorBodyPanelLayout.createSequentialGroup()
+                                .addComponent(xPower3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(number4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(number5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(number6, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(subtractionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(CalculatorBodyPanelLayout.createSequentialGroup()
+                                .addComponent(xPower2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(number1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(number2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(number3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(additionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(CalculatorBodyPanelLayout.createSequentialGroup()
+                                .addComponent(factorialButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(plusOrMinusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(zeroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(dotButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(equalSignButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(CalculatorBodyPanelLayout.createSequentialGroup()
+                                .addGroup(CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CalculatorBodyPanelLayout.createSequentialGroup()
+                                        .addComponent(SquareRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(162, 162, 162)
+                                        .addComponent(inverseTanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CalculatorBodyPanelLayout.createSequentialGroup()
+                                        .addGroup(CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(InverseCosineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CalculatorBodyPanelLayout.createSequentialGroup()
+                                                .addGroup(CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(inverseSineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, CalculatorBodyPanelLayout.createSequentialGroup()
+                                                        .addComponent(OneOverX, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(6, 6, 6)
+                                                        .addComponent(SineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(6, 6, 6)
+                                                .addComponent(CosineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(6, 6, 6)
+                                        .addComponent(TanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(CalculatorBodyPanelLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(divisionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CalculatorBodyPanelLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(modulusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(CalculatorBodyPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ScreenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        CalculatorBodyPanelLayout.setVerticalGroup(
+            CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CalculatorBodyPanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(Title)
+                .addGap(14, 14, 14)
+                .addComponent(ScreenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Pi)
+                    .addComponent(exponentValue)
+                    .addComponent(TenPowerX)
+                    .addComponent(ClearButton)
+                    .addComponent(BackButton))
+                .addGap(7, 7, 7)
+                .addGroup(CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SquareRoot, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inverseSineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inverseTanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(modulusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(InverseCosineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(OneOverX, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CosineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TanButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(divisionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(xPowerY, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(number7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(number8, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(number9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(multiplicationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(xPower3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(number4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(number5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(number6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(subtractionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(xPower2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(number1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(number2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(number3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(additionButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(CalculatorBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(factorialButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plusOrMinusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(zeroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dotButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(equalSignButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(CalculatorBodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(CalculatorBodyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(CalculatorBodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(CalculatorBodyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -452,6 +574,8 @@ public class MyCalculator extends javax.swing.JFrame {
         // TODO add your handling code here:
         String choosenSign = multiplicationButton.getText();
         if(AnswerTextField.getText().length()>0){
+            first = Double.parseDouble(InputTextField.getText());
+            operation = "*";
             InputTextField.setText(InputTextField.getText()+""+AnswerTextField.getText()+""+choosenSign);
             AnswerTextField.setText("");
         }
@@ -465,6 +589,7 @@ public class MyCalculator extends javax.swing.JFrame {
         // TODO add your handling code here:
         AnswerTextField.setText("");
         InputTextField.setText("");
+        first_initial = 0.0;
     }//GEN-LAST:event_ClearButtonActionPerformed
 
     private void inverseTanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inverseTanButtonActionPerformed
@@ -562,16 +687,21 @@ public class MyCalculator extends javax.swing.JFrame {
         // TODO add your handling code here:
         String choosenSign = additionButton.getText();
         if(AnswerTextField.getText().length()>0){
+            first = Double.parseDouble(AnswerTextField.getText());
+            first_initial =first_initial + first;
+            operation = "+";
             InputTextField.setText(InputTextField.getText()+""+AnswerTextField.getText()+""+choosenSign);
             AnswerTextField.setText("");
         }
-        
     }//GEN-LAST:event_additionButtonActionPerformed
 
     private void subtractionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtractionButtonActionPerformed
         // TODO add your handling code here:
         String choosenSign = subtractionButton.getText();
         if(AnswerTextField.getText().length()>0){
+            first = Double.parseDouble(AnswerTextField.getText());
+            first_initial = first_initial - first;
+            operation = "-";
             InputTextField.setText(InputTextField.getText()+""+AnswerTextField.getText()+""+choosenSign);
             AnswerTextField.setText("");
         }    
@@ -581,6 +711,9 @@ public class MyCalculator extends javax.swing.JFrame {
         // TODO add your handling code here:
         String choosenSign = divisionButton.getText();
         if(AnswerTextField.getText().length()>0){
+            first = Double.parseDouble(AnswerTextField.getText());
+            first_initial =first_initial + first;
+            operation = "/";
             InputTextField.setText(InputTextField.getText()+""+AnswerTextField.getText()+""+choosenSign);
             AnswerTextField.setText("");
         }
@@ -590,11 +723,22 @@ public class MyCalculator extends javax.swing.JFrame {
         // TODO add your handling code here:
         String choosenSign = equalSignButton.getText();
         if (AnswerTextField.getText().length()>0){
+            second = Double.parseDouble(AnswerTextField.getText());
             InputTextField.setText(InputTextField.getText()+""+AnswerTextField.getText()+""+choosenSign);
-            
+ 
             AnswerTextField.setText("");
             
-            
+        if(operation == "+"){
+                results = first_initial + second;
+                answer = String.format("%.2f", results);
+                AnswerTextField.setText(answer);
+        }
+         /*   
+        if(operation == "-"){
+                results = first_initial - second;
+                answer = String.format("%.2f", results);
+                AnswerTextField.setText(answer);
+        */
         }
     }//GEN-LAST:event_equalSignButtonActionPerformed
 
